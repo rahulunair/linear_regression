@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# *************************************************
+# *************************************************************
 #
 #
 #   program: LR: Linear Regression
@@ -22,7 +22,7 @@
 #           the various implementaitons and the
 #           style that I wanted to replicate it.
 #
-# *************************************************
+# *************************************************************
 
 from math import sqrt
 
@@ -38,11 +38,11 @@ print("enter 'end' to stop data entry and compute LR.")
 #
 
 n = 0.0
-sumx  = 0.0
-sumx2 = 0.0
-sumy  = 0.0
-sumy2 = 0.0
-sumxy = 0.0
+sum_x  = 0.0
+sum_xx = 0.0
+sum_y  = 0.0
+sum_yy = 0.0
+sum_xy = 0.0
 data_entry = True
 
 #
@@ -57,19 +57,19 @@ while data_entry:
         x = float(string)
         y = float(input(" y: "))
         n += 1.0                    # compute sums
-        sumx  += x
-        sumx2 += x * x
-        sumxy += x * y
-        sumy  += y
-        sumy2 += y * y
+        sum_x  += x
+        sum_xx += x * x
+        sum_xy += x * y
+        sum_y  += y
+        sum_yy += y * y
 
 #
 # compute slope - m, y-intercept - b and correlation coefficient - r
 #
 
-m = (n * sumxy - sumx * sumy) / (n * sumx2 - sumx ** 2)
-b = (sumy * sumx2 - sumx * sumxy) / (n * sumx2 - sumx ** 2)
-r = (sumxy - sumx * sumy / n) / sqrt((sumx2 - sumx ** 2 / n) * (sumy ** 2 / n))
+m = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x ** 2)
+b = (sum_y * sum_xx - sum_x * sum_xy) / (n * sum_xx - sum_x ** 2)
+r = (sum_xy - sum_x * sum_y / n) / sqrt((sum_xx - sum_x ** 2 / n) * (sum_y ** 2 / n))
 
 #
 # print results
